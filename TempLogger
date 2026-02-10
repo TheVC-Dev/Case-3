@@ -1,0 +1,32 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int get_count(){
+    cout << "How many days of temperatures would you like to record? ";
+    int daycount;
+
+    if(cin >> daycount){
+        return daycount;
+    }else{return 0;}
+}
+
+void to_file(int daycount){
+    ofstream outputFile;
+    outputFile.open("numtxt.txt");
+
+    for(int i = 0; i < daycount; i++){
+        double num;
+        cout << "Enter temperature for Day " << i + 1 << ": ";
+        if(cin >> num){
+            outputFile << num << endl;
+        }
+    }
+}
+
+int main(){
+    int daycount{get_count()};
+    to_file(daycount);
+
+    return 0;
+}
