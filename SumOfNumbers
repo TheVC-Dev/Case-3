@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+
+int main(){
+
+    while(true){
+        int total = 0;
+
+        while(true){
+            cout << "Enter a positive number to add to the sum, or negative number to quit: " << endl;
+            int num;
+            cin >> num;
+
+            if(num > 0){
+                total = total + num;
+            }else{
+                cout << "Total: " << total;
+                return false;}
+        }
+
+        cout << "The final sum is: " << total;
+
+    }
+
+    return 0;
+}
