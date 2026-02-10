@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+
+void packages(){
+    cout << "Package A:" << endl;
+    cout << "For $9.95 per month, 10 hours of access are provided. ";
+    cout << "Additional hours are $2.00 per hour." << endl;
+    
+    cout << "Package B:" << endl;
+    cout << "For $14.95 per month, 20 hours of access are provided. ";
+    cout << "Additional hours are $1.00 per hour." << endl;
+
+    cout << "Package C:" << endl;
+    cout << "For $19.95 per month, unlimited access is provided" << endl;
+}
+
+double get_sub(){
+    char char_inp;
+
+    cout << "Select a subscription package (A, B, or C): ";
+    cin >> char_inp;
+
+
+    if(char_inp == ('A'|'a')){
+        return 9.95;
+    }else if(char_inp == ('B'|'b')){
+        return 14.95;
+    }else if(char_inp == ('C'|'c')){
+        return 19.95;
+    }
+    else{throw invalid_argument("Invalid package choice. Please run the Program again and select either A, B , or C");}
+    
+    return 0;
+}
+
+double get_bill(double ch){
+    cout << "Enter the amount of hours used: ";
+    int hrs_inp;
+    cin >> hrs_inp;
+    cout << "inp: " << hrs_inp << endl;
+
+    if(hrs_inp > 0 && hrs_inp <= 744){
+        if(ch == 9.95){
+            if(hrs_inp <= 10){
+                cout << "Amount due: $" << ch << endl;
+            }else if(hrs_inp > 10){
+                cout << "Amount due: $" << ch + ((hrs_inp-10)* 2.00) << endl;
+            }
+        }else if(ch == 14.95){
+            if(hrs_inp <= 20){
+                cout << "Amount due: $" << ch << endl;
+            }else if(hrs_inp > 20){
+                cout << "Amount due: $" << ch + ((hrs_inp-20)* 1.00) << endl;
+            }
+        }else if(ch == 19.95){
+            cout << "Amount due: $" << ch << endl;
+        }
+    }else{throw invalid_argument("Invalid. Please run the Program again and enter the correct hours");}
+
+    return 0;
+}
+
+
+int main(){
+    packages();
+    get_bill(get_sub());
+
+    return 0;
+}
